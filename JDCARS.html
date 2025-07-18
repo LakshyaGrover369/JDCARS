@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JD Cars - Premium Second Hand Car Rentals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #ff4d30;
+            --secondary: #2d2d2d;
+            --light: #f8f8f8;
+            --dark: #1a1a1a;
+            --gray: #706f7b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 62.5%;
+        }
+
+        body {
+            background-color: white;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 133rem;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 1rem;
+            font-size: 3rem;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 1.7rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 2.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1489824904134-891ab64532f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1931&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 8rem;
+        }
+
+        .hero-content {
+            max-width: 70rem;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 5.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            margin-bottom: 4rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background-color: var(--primary);
+            color: white;
+            font-size: 1.7rem;
+            font-weight: 600;
+            border-radius: 0.3rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border-color: white;
+            margin-left: 1.5rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--dark);
+        }
+
+        /* Cars Section */
+        .section {
+            padding: 10rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title h2 {
+            font-size: 4.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title p {
+            font-size: 1.6rem;
+            color: var(--gray);
+            max-width: 70rem;
+            margin: 0 auto;
+        }
+
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+            gap: 3rem;
+        }
+
+        .car-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .car-card:hover {
+            transform: translateY(-1rem);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .car-img {
+            height: 20rem;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .car-content {
+            padding: 2.5rem;
+        }
+
+        .car-name {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .car-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .car-detail {
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+            color: var(--gray);
+        }
+
+        .car-detail i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        .car-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: 2rem;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .price span {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--gray);
+        }
+
+        .rent-btn {
+            padding: 1rem 2rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 0.3rem;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .rent-btn:hover {
+            background-color: var(--dark);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text h2 {
+            font-size: 4.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-text p {
+            font-size: 1.6rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .stat-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-right: 2rem;
+        }
+
+        .stat-text h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-text p {
+            font-size: 1.4rem;
+            margin-bottom: 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--dark);
+            color: white;
+        }
+
+        .contact .section-title h2 {
+            color: white;
+        }
+
+        .contact .section-title p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2.4rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info p {
+            font-size: 1.6rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .contact-details {
+            margin-bottom: 4rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 2rem;
+            width: 3rem;
+            text-align: center;
+        }
+
+        .contact-text {
+            font-size: 1.6rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 4rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-0.3rem);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1.5rem;
+            font-size: 1.6rem;
+            border: none;
+            border-radius: 0.3rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 15rem;
+        }
+
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 1.5rem 3rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #e04126;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+            gap: 5rem;
+            margin-bottom: 5rem;
+        }
+
+        .footer-col h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 5rem;
+            height: 0.2rem;
+            background-color: var(--primary);
+        }
+
+        .footer-col p {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-link a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.4rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-link a:hover {
+            color: var(--primary);
+            padding-left: 0.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 3rem;
+            right: 3rem;
+            width: 5rem;
+            height: 5rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            html {
+                font-size: 58%;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-img {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-list {
+                position: fixed;
+                top: 8rem;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 8rem);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 5rem;
+                transition: all 0.5s;
+            }
+
+            .nav-list.active {
+                left: 0;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            html {
+                font-size: 52%;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 1.5rem;
+            }
+
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(2rem);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-car"></i>
+                    <span>JD Cars</span>
+                </a>
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#cars" class="nav-link">Cars</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in">Premium Second Hand Car Rentals in Delhi</h1>
+                <p class="fade-in delay-1">Experience the joy of driving quality pre-owned cars at affordable prices. JD Cars offers the best selection of second hand vehicles for all your needs.</p>
+                <div class="fade-in delay-2">
+                    <a href="#cars" class="btn">Browse Cars</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cars Section -->
+    <section class="section" id="cars">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Car Collection</h2>
+                <p>Choose from our wide range of premium second hand cars, all thoroughly inspected and maintained for your safety and comfort.</p>
+            </div>
+            <div class="cars-grid">
+                <!-- Car 1 -->
+                <div class="car-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Honda City" class="car-img">
+                    <div class="car-content">
+                        <h3 class="car-name">Honda City</h3>
+                        <div class="car-details">
+                            <span class="car-detail"><i class="fas fa-car"></i> Sedan</span>
+                            <span class="car-detail"><i class="fas fa-gas-pump"></i> Petrol</span>
+                            <span class="car-detail"><i class="fas fa-tachometer-alt"></i> 35k km</span>
+                        </div>
+                        <div class="car-price">
+                            <div class="price">₹1,499 <span>/day</span></div>
+                            <a href="#contact" class="rent-btn">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car 2 -->
+                <div class="car-card fade-in delay-1">
+                    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Hyundai Creta" class="car-img">
+                    <div class="car-content">
+                        <h3 class="car-name">Hyundai Creta</h3>
+                        <div class="car-details">
+                            <span class="car-detail"><i class="fas fa-car"></i> SUV</span>
+                            <span class="car-detail"><i class="fas fa-gas-pump"></i> Diesel</span>
+                            <span class="car-detail"><i class="fas fa-tachometer-alt"></i> 42k km</span>
+                        </div>
+                        <div class="car-price">
+                            <div class="price">₹1,999 <span>/day</span></div>
+                            <a href="#contact" class="rent-btn">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car 3 -->
+                <div class="car-card fade-in delay-2">
+                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Maruti Swift" class="car-img">
+                    <div class="car-content">
+                        <h3 class="car-name">Maruti Swift</h3>
+                        <div class="car-details">
+                            <span class="car-detail"><i class="fas fa-car"></i> Hatchback</span>
+                            <span class="car-detail"><i class="fas fa-gas-pump"></i> Petrol</span>
+                            <span class="car-detail"><i class="fas fa-tachometer-alt"></i> 28k km</span>
+                        </div>
+                        <div class="car-price">
+                            <div class="price">₹1,199 <span>/day</span></div>
+                            <a href="#contact" class="rent-btn">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car 4 -->
+                <div class="car-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80" alt="Toyota Innova" class="car-img">
+                    <div class="car-content">
+                        <h3 class="car-name">Toyota Innova</h3>
+                        <div class="car-details">
+                            <span class="car-detail"><i class="fas fa-car"></i> MPV</span>
+                            <span class="car-detail"><i class="fas fa-gas-pump"></i> Diesel</span>
+                            <span class="car-detail"><i class="fas fa-tachometer-alt"></i> 55k km</span>
+                        </div>
+                        <div class="car-price">
+                            <div class="price">₹2,499 <span>/day</span></div>
+                            <a href="#contact" class="rent-btn">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car 5 -->
+                <div class="car-card fade-in delay-1">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="BMW 3 Series" class="car-img">
+                    <div class="car-content">
+                        <h3 class="car-name">BMW 3 Series</h3>
+                        <div class="car-details">
+                            <span class="car-detail"><i class="fas fa-car"></i> Luxury</span>
+                            <span class="car-detail"><i class="fas fa-gas-pump"></i> Petrol</span>
+                            <span class="car-detail"><i class="fas fa-tachometer-alt"></i> 25k km</span>
+                        </div>
+                        <div class="car-price">
+                            <div class="price">₹3,999 <span>/day</span></div>
+                            <a href="#contact" class="rent-btn">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car 6 -->
+                <div class="car-card fade-in delay-2">
+                    <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Mahindra Scorpio" class="car-img">
+                    <div class="car-content">
+                        <h3 class="car-name">Mahindra Scorpio</h3>
+                        <div class="car-details">
+                            <span class="car-detail"><i class="fas fa-car"></i> SUV</span>
+                            <span class="car-detail"><i class="fas fa-gas-pump"></i> Diesel</span>
+                            <span class="car-detail"><i class="fas fa-tachometer-alt"></i> 38k km</span>
+                        </div>
+                        <div class="car-price">
+                            <div class="price">₹2,199 <span>/day</span></div>
+                            <a href="#contact" class="rent-btn">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Why Choose JD Cars?</h2>
+                    <p>At JD Cars, we understand that buying or renting a second hand car can be a daunting experience. That's why we've made it our mission to provide only the highest quality pre-owned vehicles, each meticulously inspected and maintained to ensure your complete satisfaction.</p>
+                    <p>With over 10 years of experience in the automotive industry, our team of experts carefully selects each vehicle in our inventory, so you can drive with confidence knowing you're getting a reliable car at an unbeatable price.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="stat-text">
+                                <h3>150+</h3>
+                                <p>Cars Available</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-smile"></i>
+                            </div>
+                            <div class="stat-text">
+                                <h3>1000+</h3>
+                                <p>Happy Customers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1226&q=80" alt="JD Cars Showroom">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Have questions about our cars or services? Get in touch with our friendly team today.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Visit our showroom in Rohini to test drive any of our vehicles or speak with our knowledgeable staff about your car rental needs.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                Sector-17, Rohini, Delhi - 110089
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                +91 9654331128
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                info@jdcars.com
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                Mon-Sat: 9:00 AM - 8:00 PM
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="">Select Car of Interest</option>
+                                <option value="Honda City">Honda City</option>
+                                <option value="Hyundai Creta">Hyundai Creta</option>
+                                <option value="Maruti Swift">Maruti Swift</option>
+                                <option value="Toyota Innova">Toyota Innova</option>
+                                <option value="BMW 3 Series">BMW 3 Series</option>
+                                <option value="Mahindra Scorpio">Mahindra Scorpio</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>JD Cars</h3>
+                    <p>Your trusted partner for premium second hand car rentals in Delhi. Quality vehicles at affordable prices.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#home">Home</a></li>
+                        <li class="footer-link"><a href="#cars">Our Cars</a></li>
+                        <li class="footer-link"><a href="#about">About Us</a></li>
+                        <li class="footer-link"><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Popular Cars</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Honda City</a></li>
+                        <li class="footer-link"><a href="#">Hyundai Creta</a></li>
+                        <li class="footer-link"><a href="#">Maruti Swift</a></li>
+                        <li class="footer-link"><a href="#">Toyota Innova</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get updates on new arrivals and special offers.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 JD Cars. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const navList = document.querySelector('.nav-list');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navList.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Sticky Header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation on Scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Initialize elements as invisible
+        fadeElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(2rem)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+    </script>
+</body>
+</html>
