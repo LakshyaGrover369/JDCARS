@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JD Cars - Premium Second Hand Car Rentals</title>
+    <title>JD Cars - Premium Second Hand Car Dealers</title>
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Global Styles */
@@ -138,12 +139,12 @@
         }
 
         .btn:hover {
-            background-color: transparent;
+            background-color: transpabuy;
             color: var(--primary);
         }
 
         .btn-secondary {
-            background-color: transparent;
+            background-color: transpabuy;
             color: white;
             border-color: white;
             margin-left: 1.5rem;
@@ -184,82 +185,115 @@
 
         .car-card {
             background-color: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 1.2rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
             overflow: hidden;
-            transition: all 0.3s;
+            transition: box-shadow 0.2s, transform 0.2s;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
         }
 
         .car-card:hover {
-            transform: translateY(-1rem);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.13);
         }
 
-        .car-img {
-            height: 20rem;
-            width: 100%;
+        .car-images-gallery {
+            display: flex;
+            overflow-x: auto;
+            gap: 1.2rem;
+            margin-bottom: 0;
+            scroll-snap-type: x mandatory;
+            background: #fafbfc;
+            padding: 1.2rem 1.2rem 0.5rem 1.2rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .car-images-gallery img {
+            height: 20rem !important;
+            width: 40rem !important;
             object-fit: cover;
+            border-radius: 0.8rem;
+            scroll-snap-align: start;
+            flex-shrink: 0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            background: #f8f8f8;
+            border: 1px solid #eee;
         }
 
         .car-content {
-            padding: 2.5rem;
+            padding: 2.2rem 2.2rem 1.8rem 2.2rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .car-name {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
+            font-size: 2.1rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: #222;
         }
 
         .car-details {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 2rem;
+            gap: 2.2rem;
+            margin-bottom: 1.6rem;
         }
 
         .car-detail {
             display: flex;
             align-items: center;
             font-size: 1.4rem;
-            color: var(--gray);
+            color: #888;
+            font-weight: 400;
+            gap: 0.5rem;
         }
 
         .car-detail i {
-            margin-right: 0.5rem;
             color: var(--primary);
+            font-size: 1.3rem;
         }
 
         .car-price {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            padding-top: 2rem;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 1.5rem;
+            margin-top: auto;
         }
 
         .price {
-            font-size: 2.2rem;
+            font-size: 2.1rem;
             font-weight: 700;
+            color: #222;
         }
 
         .price span {
-            font-size: 1.4rem;
-            font-weight: 500;
-            color: var(--gray);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #aaa;
         }
 
-        .rent-btn {
-            padding: 1rem 2rem;
+        .buy-btn {
+            padding: 0.9rem 2.2rem;
             background-color: var(--primary);
-            color: white;
-            border-radius: 0.3rem;
+            color: #fff;
+            border-radius: 0.4rem;
             text-decoration: none;
             font-size: 1.4rem;
             font-weight: 600;
-            transition: all 0.3s;
+            border: none;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(255,77,48,0.08);
+            margin-left: 1.2rem;
+            cursor: pointer;
         }
-
-        .rent-btn:hover {
-            background-color: var(--dark);
+        .buy-btn:hover {
+            background-color: #fff;
+            color: var(--primary);
+            border: 1px solid var(--primary);
         }
 
         /* About Section */
@@ -631,6 +665,31 @@
         .delay-3 {
             animation-delay: 0.6s;
         }
+
+        .car-images-gallery {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            scroll-snap-type: x mandatory;
+        }
+        .car-images-gallery img {
+            height: 20rem;
+            width: 30rem;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            scroll-snap-align: start;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            background: #f8f8f8;
+        }
+        .car-images-gallery::-webkit-scrollbar {
+            height: 8px;
+        }
+        .car-images-gallery::-webkit-scrollbar-thumb {
+            background: #eee;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -640,13 +699,10 @@
             <nav class="navbar">
                 <a href="#" class="logo">
                     <i class="fas fa-car"></i>
-                    <span>JD Cars</span>
+                    <span id="companyName">JD Cars</span>
                 </a>
-                <ul class="nav-list">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#cars" class="nav-link">Cars</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                <ul class="nav-list" id="navList">
+                    <!-- Navigation links will be populated by JavaScript -->
                 </ul>
                 <div class="mobile-menu">
                     <i class="fas fa-bars"></i>
@@ -659,11 +715,11 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="fade-in">Premium Second Hand Car Rentals in Delhi</h1>
-                <p class="fade-in delay-1">Experience the joy of driving quality pre-owned cars at affordable prices. JD Cars offers the best selection of second hand vehicles for all your needs.</p>
+                <h1 class="fade-in" id="heroTitle">Premium Second Hand Car Rentals in Delhi</h1>
+                <p class="fade-in delay-1" id="heroDescription">Experience the joy of driving quality pre-owned cars at affordable prices. JD Cars offers the best selection of second hand vehicles for all your needs.</p>
                 <div class="fade-in delay-2">
-                    <a href="#cars" class="btn">Browse Cars</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                    <a href="#cars" class="btn" id="heroPrimaryBtn">Browse Cars</a>
+                    <a href="#contact" class="btn btn-secondary" id="heroSecondaryBtn">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -673,111 +729,11 @@
     <section class="section" id="cars">
         <div class="container">
             <div class="section-title">
-                <h2>Our Car Collection</h2>
-                <p>Choose from our wide range of premium second hand cars, all thoroughly inspected and maintained for your safety and comfort.</p>
+                <h2 id="carsSectionTitle">Our Car Collection</h2>
+                <p id="carsSectionDescription">Choose from our wide range of premium second hand cars, all thoroughly inspected and maintained for your safety and comfort.</p>
             </div>
-            <div class="cars-grid">
-                <!-- Car 1 -->
-                <div class="car-card fade-in">
-                    <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Honda City" class="car-img">
-                    <div class="car-content">
-                        <h3 class="car-name">Honda City</h3>
-                        <div class="car-details">
-                            <span class="car-detail"><i class="fas fa-car"></i> Sedan</span>
-                            <span class="car-detail"><i class="fas fa-gas-pump"></i> Petrol</span>
-                            <span class="car-detail"><i class="fas fa-tachometer-alt"></i> 35k km</span>
-                        </div>
-                        <div class="car-price">
-                            <div class="price">₹1,499 <span>/day</span></div>
-                            <a href="#contact" class="rent-btn">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Car 2 -->
-                <div class="car-card fade-in delay-1">
-                    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Hyundai Creta" class="car-img">
-                    <div class="car-content">
-                        <h3 class="car-name">Hyundai Creta</h3>
-                        <div class="car-details">
-                            <span class="car-detail"><i class="fas fa-car"></i> SUV</span>
-                            <span class="car-detail"><i class="fas fa-gas-pump"></i> Diesel</span>
-                            <span class="car-detail"><i class="fas fa-tachometer-alt"></i> 42k km</span>
-                        </div>
-                        <div class="car-price">
-                            <div class="price">₹1,999 <span>/day</span></div>
-                            <a href="#contact" class="rent-btn">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Car 3 -->
-                <div class="car-card fade-in delay-2">
-                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Maruti Swift" class="car-img">
-                    <div class="car-content">
-                        <h3 class="car-name">Maruti Swift</h3>
-                        <div class="car-details">
-                            <span class="car-detail"><i class="fas fa-car"></i> Hatchback</span>
-                            <span class="car-detail"><i class="fas fa-gas-pump"></i> Petrol</span>
-                            <span class="car-detail"><i class="fas fa-tachometer-alt"></i> 28k km</span>
-                        </div>
-                        <div class="car-price">
-                            <div class="price">₹1,199 <span>/day</span></div>
-                            <a href="#contact" class="rent-btn">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Car 4 -->
-                <div class="car-card fade-in">
-                    <img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80" alt="Toyota Innova" class="car-img">
-                    <div class="car-content">
-                        <h3 class="car-name">Toyota Innova</h3>
-                        <div class="car-details">
-                            <span class="car-detail"><i class="fas fa-car"></i> MPV</span>
-                            <span class="car-detail"><i class="fas fa-gas-pump"></i> Diesel</span>
-                            <span class="car-detail"><i class="fas fa-tachometer-alt"></i> 55k km</span>
-                        </div>
-                        <div class="car-price">
-                            <div class="price">₹2,499 <span>/day</span></div>
-                            <a href="#contact" class="rent-btn">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Car 5 -->
-                <div class="car-card fade-in delay-1">
-                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="BMW 3 Series" class="car-img">
-                    <div class="car-content">
-                        <h3 class="car-name">BMW 3 Series</h3>
-                        <div class="car-details">
-                            <span class="car-detail"><i class="fas fa-car"></i> Luxury</span>
-                            <span class="car-detail"><i class="fas fa-gas-pump"></i> Petrol</span>
-                            <span class="car-detail"><i class="fas fa-tachometer-alt"></i> 25k km</span>
-                        </div>
-                        <div class="car-price">
-                            <div class="price">₹3,999 <span>/day</span></div>
-                            <a href="#contact" class="rent-btn">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Car 6 -->
-                <div class="car-card fade-in delay-2">
-                    <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Mahindra Scorpio" class="car-img">
-                    <div class="car-content">
-                        <h3 class="car-name">Mahindra Scorpio</h3>
-                        <div class="car-details">
-                            <span class="car-detail"><i class="fas fa-car"></i> SUV</span>
-                            <span class="car-detail"><i class="fas fa-gas-pump"></i> Diesel</span>
-                            <span class="car-detail"><i class="fas fa-tachometer-alt"></i> 38k km</span>
-                        </div>
-                        <div class="car-price">
-                            <div class="price">₹2,199 <span>/day</span></div>
-                            <a href="#contact" class="rent-btn">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="cars-grid" id="carsGrid">
+                <!-- Car cards will be populated by JavaScript -->
             </div>
         </div>
     </section>
@@ -787,32 +743,15 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>Why Choose JD Cars?</h2>
-                    <p>At JD Cars, we understand that buying or renting a second hand car can be a daunting experience. That's why we've made it our mission to provide only the highest quality pre-owned vehicles, each meticulously inspected and maintained to ensure your complete satisfaction.</p>
-                    <p>With over 10 years of experience in the automotive industry, our team of experts carefully selects each vehicle in our inventory, so you can drive with confidence knowing you're getting a reliable car at an unbeatable price.</p>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="fas fa-car"></i>
-                            </div>
-                            <div class="stat-text">
-                                <h3>150+</h3>
-                                <p>Cars Available</p>
-                            </div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <i class="fas fa-smile"></i>
-                            </div>
-                            <div class="stat-text">
-                                <h3>1000+</h3>
-                                <p>Happy Customers</p>
-                            </div>
-                        </div>
+                    <h2 id="aboutTitle">Why Choose JD Cars?</h2>
+                    <p id="aboutDescription1">At JD Cars, we understand that buying or buying a second hand car can be a daunting experience. That's why we've made it our mission to provide only the highest quality pre-owned vehicles, each meticulously inspected and maintained to ensure your complete satisfaction.</p>
+                    <p id="aboutDescription2">With over 10 years of experience in the automotive industry, our team of experts carefully selects each vehicle in our inventory, so you can drive with confidence knowing you're getting a reliable car at an unbeatable price.</p>
+                    <div class="about-stats" id="aboutStats">
+                        <!-- Stats will be populated by JavaScript -->
                     </div>
                 </div>
                 <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1226&q=80" alt="JD Cars Showroom">
+                    <img id="aboutImage" src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1226&q=80" alt="JD Cars Showroom">
                 </div>
             </div>
         </div>
@@ -822,57 +761,23 @@
     <section class="section contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Contact Us</h2>
-                <p>Have questions about our cars or services? Get in touch with our friendly team today.</p>
+                <h2 id="contactSectionTitle">Contact Us</h2>
+                <p id="contactSectionDescription">Have questions about our cars or services? Get in touch with our friendly team today.</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <p>Visit our showroom in Rohini to test drive any of our vehicles or speak with our knowledgeable staff about your car rental needs.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                Sector-17, Rohini, Delhi - 110089
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                +91 9654331128
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                info@jdcars.com
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-text">
-                                Mon-Sat: 9:00 AM - 8:00 PM
-                            </div>
-                        </div>
+                    <h3 id="contactInfoTitle">Get In Touch</h3>
+                    <p id="contactInfoDescription">Visit our showroom in Rohini to test drive any of our vehicles or speak with our knowledgeable staff about your car buyal needs.</p>
+                    <div class="contact-details" id="contactDetails">
+                        <!-- Contact details will be populated by JavaScript -->
                     </div>
-                    <h3>Follow Us</h3>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <h3 id="socialTitle">Follow Us</h3>
+                    <div class="social-links" id="socialLinks">
+                        <!-- Social links will be populated by JavaScript -->
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
+                    <form id="contactForm">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Your Name" required>
                         </div>
@@ -883,14 +788,9 @@
                             <input type="tel" class="form-control" placeholder="Your Phone">
                         </div>
                         <div class="form-group">
-                            <select class="form-control">
+                            <select class="form-control" id="carSelect">
                                 <option value="">Select Car of Interest</option>
-                                <option value="Honda City">Honda City</option>
-                                <option value="Hyundai Creta">Hyundai Creta</option>
-                                <option value="Maruti Swift">Maruti Swift</option>
-                                <option value="Toyota Innova">Toyota Innova</option>
-                                <option value="BMW 3 Series">BMW 3 Series</option>
-                                <option value="Mahindra Scorpio">Mahindra Scorpio</option>
+                                <!-- Car options will be populated by JavaScript -->
                             </select>
                         </div>
                         <div class="form-group">
@@ -906,47 +806,11 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h3>JD Cars</h3>
-                    <p>Your trusted partner for premium second hand car rentals in Delhi. Quality vehicles at affordable prices.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="#home">Home</a></li>
-                        <li class="footer-link"><a href="#cars">Our Cars</a></li>
-                        <li class="footer-link"><a href="#about">About Us</a></li>
-                        <li class="footer-link"><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Popular Cars</h3>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="#">Honda City</a></li>
-                        <li class="footer-link"><a href="#">Hyundai Creta</a></li>
-                        <li class="footer-link"><a href="#">Maruti Swift</a></li>
-                        <li class="footer-link"><a href="#">Toyota Innova</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to get updates on new arrivals and special offers.</p>
-                    <form>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
-                        </div>
-                        <button type="submit" class="submit-btn">Subscribe</button>
-                    </form>
-                </div>
+            <div class="footer-content" id="footerContent">
+                <!-- Footer content will be populated by JavaScript -->
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 JD Cars. All Rights Reserved.</p>
+                <p id="footerCopyright">&copy; 2023 JD Cars. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -957,91 +821,8 @@
     </div>
 
     <!-- JavaScript -->
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu');
-        const navList = document.querySelector('.nav-list');
+    <script src="data.js"></script>
+    <script src="index.js"></script>
 
-        mobileMenuBtn.addEventListener('click', () => {
-            navList.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navList.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navList.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-
-        // Sticky Header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            header.classList.toggle('sticky', window.scrollY > 0);
-        });
-
-        // Back to Top Button
-        const backToTopBtn = document.querySelector('.back-to-top');
-
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('active');
-            } else {
-                backToTopBtn.classList.remove('active');
-            }
-        });
-
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Smooth Scrolling for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Animation on Scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-
-        const fadeInOnScroll = () => {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        };
-
-        // Initialize elements as invisible
-        fadeElements.forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(2rem)';
-            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        });
-
-        window.addEventListener('scroll', fadeInOnScroll);
-        window.addEventListener('load', fadeInOnScroll);
-    </script>
 </body>
 </html>
