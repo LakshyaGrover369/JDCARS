@@ -102,7 +102,7 @@ function populateCars() {
                     <span class="car-detail"><i class="fas fa-tachometer-alt"></i> ${car.mileage}</span>
                 </div>
                 <div class="car-price">
-                    <div class="price">₹${car.price} <span>/day</span></div>
+                    <div class="price">₹${car.price} </div>
                     <a href="#contact" class="buy-btn">Buy Now</a>
                 </div>
             </div>

@@ -79,8 +79,8 @@ const siteData = {
             delay: "delay-2"
         },
         {
-            id: "bmw-3series",
-            name: "BMW 3 Series",
+            id: "tata-bolt",
+            name: "Tata Bolt",
             images: [
                 "./images/tatabolt11.jpeg",
                 "./images/tatabolt12.jpeg",
@@ -92,7 +92,7 @@ const siteData = {
                 "./images/tatabolt18.jpeg",
                 "./images/tatabolt19.jpeg",
             ],
-            type: "Luxury",
+            type: "Hatchback",
             fuel: "Petrol",
             mileage: "25k km",
             price: 3999,
@@ -106,15 +106,14 @@ const siteData = {
         },
         about: {
             title: "Why Choose JD Cars?",
-            description1: "At JD Cars, we understand that buying or renting a second hand car can be a daunting experience. That's why we've made it our mission to provide only the highest quality pre-owned vehicles, each meticulously inspected and maintained to ensure your complete satisfaction.",
-            description2: "With over 10 years of experience in the automotive industry, our team of experts carefully selects each vehicle in our inventory, so you can drive with confidence knowing you're getting a reliable car at an unbeatable price.",
-            image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1226&q=80"
+            description1: "At JD Cars, we understand that buying a second hand car can be a daunting experience. That's why we've made it our mission to provide only the highest quality pre-owned vehicles, each meticulously inspected and maintained to ensure your complete satisfaction.",
+            description2: "With over 10 years of experience in the automotive industry, our team of experts carefully selects each vehicle in our inventory, so you can drive with confidence knowing you're getting a reliable car at an unbeatable price."
         },
         contact: {
             title: "Contact Us",
             description: "Have questions about our cars or services? Get in touch with our friendly team today.",
             infoTitle: "Get In Touch",
-            infoDescription: "Visit our showroom in Rohini to test drive any of our vehicles or speak with our knowledgeable staff about your car rental needs.",
+            infoDescription: "Visit our showroom in Rohini to test drive any of our vehicles or speak with our knowledgeable staff about your car buying needs.",
             socialTitle: "Follow Us"
         }
     },
@@ -175,7 +174,9 @@ function populateCars() {
     const carsGrid = document.getElementById('carsGrid');
     carsGrid.innerHTML = siteData.cars.map(car => `
         <div class="car-card fade-in ${car.delay}">
-            <img src="${car.images[0]}" alt="${car.name}" class="car-img">
+            <div class="car-images-gallery">
+                ${car.images.map(img => `<img src="${img}" alt="${car.name}">`).join('')}
+            </div>
             <div class="car-content">
                 <h3 class="car-name">${car.name}</h3>
                 <div class="car-details">
@@ -184,8 +185,8 @@ function populateCars() {
                     <span class="car-detail"><i class="fas fa-tachometer-alt"></i> ${car.mileage}</span>
                 </div>
                 <div class="car-price">
-                    <div class="price">₹${car.price} <span>/day</span></div>
-                    <a href="#contact" class="rent-btn">Rent Now</a>
+                    <div class="price">₹${car.price}</div>
+                    <a href="#contact" class="buy-btn">Buy Now</a>
                 </div>
             </div>
         </div>
